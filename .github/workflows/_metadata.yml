@@ -1,0 +1,36 @@
+# ----------------------------------------------- #
+# Note: this file originates in template-template #
+# ----------------------------------------------- #
+
+name: metadata
+
+on:
+  workflow_call:
+    # Map the workflow outputs to job outputs
+    outputs:
+      repository_name:
+        description: Repository name
+        value: ${{ jobs.metadata.outputs.repository_name }}
+      repository_is_template:
+        description: Flag indicating if the repository is a template
+        value: ${{ jobs.metadata.outputs.repository_is_template }}
+      repository_default_branch:
+        description: Repository main/default branch
+        value: ${{ jobs.metadata.outputs.repository_default_branch }}
+
+jobs:
+  metadata:
+    name: metadata
+    runs-on: ubuntu-20.04
+    timeout-minutes: 5
+    outputs:
+      repository_name: ${{ steps.metadata.outputs.repository_name }}
+      repository_is_template: ${{ steps.metadata.outputs.repository_is_template }}
+      repository_default_branch: ${{ steps.metadata.outputs.repository_default_branch }}
+
+    steps:
+      - uses: actions/checkout@v4.1.4
+        with:
+          fetch-depth: 2
+      - id: metadata
+        uses: ahmadnassri/action-metadata@v2.1.2

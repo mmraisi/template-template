@@ -4,7 +4,14 @@
 
 name: template sync
 
-on: [push, pull_request]
+on:
+  workflow_call:
+    inputs:
+      default_branch:
+        description: The default/main branch of the repository
+        default: 'main'
+        required: false
+        type: string
 
 permissions:
   contents: write
