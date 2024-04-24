@@ -4,6 +4,8 @@
 
 name: template sync
 
+## some change
+
 on:
   workflow_call:
     inputs:
