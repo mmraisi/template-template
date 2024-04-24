@@ -26,5 +26,5 @@ jobs:
   dependabot:
     # only run for dependabot PRs
     if: github.actor == 'dependabot[bot]'
-    uses: mmraisi/template-ci/.github/workflows/auto_merge.yml@main
+    uses: mmraisi/template-template/.github/workflows/auto_merge.yml@main
     secrets: inherit
