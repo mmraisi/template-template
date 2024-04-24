@@ -1,0 +1,14 @@
+# ----------------------------------------------- #
+# Note: this file originates in template-template #
+# ----------------------------------------------- #
+
+additional:
+  - "template-*"
+
+files:
+  #  files to sync to other templates
+  - "!.github/workflows"
+  - "!README.md"
+  - "!.gitignore"
+  - "!**/dependabot.yml"
+  - "!**/template-sync.yml"
