@@ -2,25 +2,27 @@
 # Note: this file originates in template-template #
 # ----------------------------------------------- #
 
-
 name: auto-merge
 
 on:
   workflow_call:
+    secrets:
+      TOKEN_GITHUB:
+        description: GitHub Personal Access Token
+        required: true
 
 permissions:
   contents: write
   pull-requests: write
 
 jobs:
-  auto-merge-dependabot:
-    name: dependabot
-    runs-on: ubuntu-20.04
+  auto-merge:
     timeout-minutes: 5
+    runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4.1.7
 
       - uses: ahmadnassri/action-dependabot-auto-merge@v2.6.6
         with:
           target: minor
-          github-token: ${{ secrets.GH_TOKEN_WRITE }}
+          github-token: ${{ secrets.TOKEN_GITHUB }}
