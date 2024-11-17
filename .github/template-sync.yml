@@ -3,13 +3,16 @@
 # ----------------------------------------------- #
 
 additional:
-  # temporarily include repos manually # https://github.com/github/docs/issues/3630
   - "template-*"
 
 files:
-  #  files to sync to other templates
-  - "!.github/workflows"
-  - "!README.md"
-  - "!.gitignore"
-  - "!**/dependabot.yml"
+  #  files to exclude
+  - "!.github/workflows/*"
   - "!**/template-sync.yml"
+  - "!.gitignore"
+  - "!README.*"
+  #  files to sync
+  - .github/template/_pull-request-target.yml: .github/workflows/pull-request-target.yml
+  - .github/template/_push.yml: .github/workflows/push.yml
+  - .github/template/dependabot.yml: .github/dependabot.yml
+  - "LICENSE"
