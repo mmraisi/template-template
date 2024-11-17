@@ -1,0 +1,29 @@
+# ---------------------------------------------------- #
+# Note: this file originates in template-template #
+# ---------------------------------------------------- #
+
+name: push
+
+on:
+  - push
+  - workflow_dispatch
+
+concurrency:
+  group: ${{ github.ref }}-${{ github.workflow }}
+
+permissions:
+  contents: write
+  statuses: write
+  pull-requests: write
+
+jobs:
+  metadata:
+    uses: mmraisi/template-template/.github/workflows/_metadata.yml@main
+
+  template-sync:
+    needs:
+      - metadata
+
+    if: ${{ needs.metadata.outputs.repository_default_branch == github.ref_name }}
+    uses: mmraisi/template-template/.github/workflows/_template-sync.yml@main
+    secrets: inherit
