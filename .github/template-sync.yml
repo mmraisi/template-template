@@ -2,14 +2,20 @@
 # Note: this file originates in template-template #
 # ----------------------------------------------- #
 
+dependents:
+  - "template-*" # include
+
 additional:
-  # temporarily include repos manually # https://github.com/github/docs/issues/3630
   - "template-*"
 
 files:
-  #  files to sync to other templates
+  #  files to exclude
   - "!.github/workflows"
   - "!README.md"
   - "!.gitignore"
   - "!**/dependabot.yml"
   - "!**/template-sync.yml"
+  #  files to sync
+  - .github/template/_pull-request-target.yml: .github/workflows/pull-request-target.yml
+  - .github/template/dependabot.yml: .github/dependabot.yml
+  - "LICENSE"
