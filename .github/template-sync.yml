@@ -12,5 +12,6 @@ files:
   - "!README.*"
   #  files to sync
   - .github/template/_pull-request-target.yml: .github/template/_pull-request-target.yml
+  - .github/template/_push.yml: .github/template/_push.yml
   - .github/template/dependabot.yml: .github/dependabot.yml
   - "**/LICENSE"

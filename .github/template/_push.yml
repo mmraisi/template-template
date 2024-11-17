@@ -1,0 +1,22 @@
+# ---------------------------------------------------- #
+# Note: this file originates in template-template #
+# ---------------------------------------------------- #
+name: push-template
+
+on:
+  workflow_call:
+
+concurrency:
+  group: ${{ github.ref }}-${{ github.workflow }}
+
+jobs:
+  metadata:
+    uses: ./.github/template/_metadata.yml
+
+  template-sync:
+    needs:
+      - metadata
+
+    if: ${{ needs.metadata.outputs.repository_default_branch == github.ref_name }}
+    uses: ./.github/template/_template-sync.yml
+    secrets: inherit
