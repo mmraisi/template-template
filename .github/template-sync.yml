@@ -8,11 +8,9 @@ additional:
 files:
   #  files to exclude
   - "!.github/workflows/*"
+  - "!.github/template/*"
   - "!**/template-sync.yml"
   - "!.gitignore"
   - "!README.*"
   #  files to sync
-  - .github/template/_pull-request-target.yml: .github/workflows/pull-request-target.yml
-  - .github/template/_push.yml: .github/workflows/push.yml
-  - .github/template/dependabot.yml: .github/dependabot.yml
   - "LICENSE"
